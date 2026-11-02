@@ -1,0 +1,18 @@
+@page
+@model AuthDemo.Pages.Admin.IndexModel
+@attribute [Microsoft.AspNetCore.Authorization.Authorize]
+
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<h1>Admin Dashboard</h1>
+
+<p>Welcome, @User.Identity?.Name!</p>
+
+<p>You have successfully logged in. This page is protected.</p>
+
+<form method="post" asp-page="/Account/Logout">
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-danger">Log Out</button>
+</form>
